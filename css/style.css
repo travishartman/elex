@@ -1,13 +1,17 @@
 
-
+#main-content {
+  width: 960;
+  margin: 0, 15px, 0, 15px;
+}
 
 .my-map {
   height: 500px;
 }
 
 
-.county {
-	fill: #aaa;
+
+.group.county {
+	fill: #fff;
   transition: fill 0.2s ease;
 }
 
@@ -23,20 +27,22 @@
 
 
 /*hover sets to red*/
-.county:hover {
-   fill: #D0D1D6;
-}
+/*.county:hover {
+  opacity: .5;
 
-.ushouse {
-	fill: #aaa;
+}*/
+
+.group.ushouse {
+	/*fill: #fff;*/
   	transition: fill 0.2s ease;
 
 }
 
 /*hover sets to red*/
-.ushouse:hover {
+/*.ushouse:hover {
 	fill: #D0D1D6;
-}
+  opacity: .5;
+}*/
 
 .ushouse-edges {
   fill: none;
@@ -49,15 +55,16 @@
 
 }
 
-.mosenate {
-  fill: #aaa;
+.group.mosenate {
+  fill: #fff;
+
     transition: fill 0.2s ease;
 
 }
 
 /*hover sets to red*/
-.mosenate:hover {
-  fill: #D0D1D6;
+[class = "mosenate"]:hover {
+  fill: #;
 }
 
 .mosenate-edges {
@@ -71,13 +78,13 @@
 
 }
 
-.mohouse {
-	fill: #aaa;
+.group.mohouse {
+	fill: #fff;
   	transition: fill 0.2s ease;
 }
 
 /*hover sets to red*/
-.mohouse:hover {
+.mohouse :hover {
 	fill: #D0D1D6;
 }
 
@@ -102,6 +109,7 @@ visibility: hidden;
 }
 .my-map .group.mohouse {
   visibility: hidden;
+
 }
 .my-map .group.ushouse {
   visibility: hidden;
@@ -110,9 +118,320 @@ visibility: hidden;
   visibility: visible;
 }
 
+ul {
+  list-style: none;
+  margin-left: 5px;
+  padding: 0;
+margin: 10px;
+}
+
+li {
+  margin-left: 0px;
+}
 
 .btn {
-	margin-left: 500px;
+margin-left: 40px;
 	margin-top: 25px;
 	/*float: right;*/
 }
+
+.cty {
+  margin-top: -30px;
+
+}
+
+.ibhed {
+  margin-top: -10px;
+}
+
+#mapholder{
+  width: 930px;
+  position: relative;
+}
+
+#infobox {
+  height: 450px;
+  width: 250px;
+  /*background-color: red;*/
+  position: absolute;
+  top: 80px;
+  right: 100px;
+
+  z-index: -1;
+}
+
+
+
+
+
+/*candidate color values: SVG */
+
+
+
+/*state auditor:*/
+
+      /*constituiton party*/
+
+      .fa.Constitution {
+        color: #7C689E;
+      }
+
+      .county._750074444:hover {
+      fill: #7C689E;
+      opacity: .85;
+      transition: fill 0.2s ease;
+      }
+      .county._750074444 {
+      fill: #7C689E;
+      opacity: 1;
+      transition: fill 0.2s ease;
+
+      }
+
+      /*libertarian*/
+
+      .fa.Libertarian {
+        color: #856027;
+      }
+      .county._750074445:hover {
+      opacity: .85;
+      transition: fill 0.2s ease;
+      }
+      .county._750074445 {
+      fill: #856027;
+      opacity: 1;
+      transition: fill 0.2s ease;
+      }
+
+      /*republican*/
+
+      .fa.Republican {
+        color: #923A43;
+      }
+
+         .county._750074446:hover  {
+      opacity: .85;
+      transition: fill 0.2s ease;
+      }
+      .county._750074446  {
+      fill: #923A43;
+      opacity: 1;
+      transition: fill 0.2s ease;
+      }
+
+      .fa.Democratic {
+        color: #304EA7;
+      }
+
+      .fa.Write-in {
+        color: #000000;
+      }
+
+      .fa.Independent {
+        color: #3F5F49;
+      }
+
+/*Amendment 2/3/6/10*/
+
+
+      .county._yes:hover {
+      transition: fill 0.2s ease;
+      opacity: .75;
+      }
+      .county._yes {
+      fill: #41747F;
+      opacity: .85;
+      }
+
+      .fa.yesvote {
+    color: #41747F;
+    opacity: .85;
+
+
+      }
+
+      .fa.novote {
+        color: #666699;
+        opacity: .85;
+
+      }
+
+      .county._no:hover {
+      transition: fill 0.2s ease;
+      opacity: .65;
+
+      }
+      .county._no {
+      fill: #666699;
+      transition: fill 0.2s ease;
+      opacity: .85;
+
+      }
+
+
+
+/*MoHouse*/
+
+
+.mohouse.Republican:hover {
+
+      opacity: .85;
+}
+.mohouse.Republican {
+   fill: #923A43;
+      /*opacity: .5;*/
+}
+
+
+.mohouse.Libertarian:hover {
+
+      opacity: .85;
+}
+.mohouse.Libertarian {
+       fill: #856027;
+      /*opacity: .5;*/
+}
+
+
+.mohouse.Democratic {
+  fill: #304EA7;
+/*  opacity: .5;
+*/}
+
+.mohouse.Democratic:hover {
+      opacity: .85;
+}
+
+.mohouse.Constitution:hover {
+
+      opacity: .85;
+}
+.mohouse.Constitution {
+    fill: #7C689E;
+      /*opacity: .5;*/
+}
+
+
+.mohouse.Write-in:hover {
+    /*fill: #000000;*/
+      opacity: .85;
+
+}
+.mohouse.Write-in {
+    fill: #000000;
+/*      opacity: .5;
+*/
+}
+
+
+/*MoSenate*/
+
+
+/*not in contention: by using brackets, it selects the elements with exact class "mosenate"*/
+[class="mosenate"] {
+  fill: #9A9993;
+  /*opacity: .5;*/
+}
+
+.fa.norace {
+  color: #9A9993;
+}
+
+.mosenate.Republican:hover {
+      opacity: .85;
+}
+.mosenate.Republican {
+   fill: #923A43;
+/*      opacity: .5;
+*/}
+
+.mosenate.Libertarian:hover {
+      opacity: .85;
+}
+.mosenate.Libertarian {
+       fill: #856027;
+/*      opacity: .5;
+*/}
+
+.mosenate.Democratic {
+  fill: #304EA7;
+/*  opacity: .5;
+*/}
+
+.mosenate.Democratic:hover {
+      opacity: .85;
+}
+
+.mosenate.Constitution:hover {
+      opacity: .85;
+}
+.mosenate.Constitution {
+    fill: #7C689E;
+/*      opacity: .5;
+*/}
+
+
+.mosenate.Write-in:hover {
+    fill: #000000;
+      opacity: .85;
+
+}
+.mosenate.Write-in {
+    fill: #000000;
+/*      opacity: .9;
+*/
+}
+
+/*USHouse*/
+
+.ushouse.Republican:hover {
+      opacity: .85;
+}
+.ushouse.Republican {
+   fill: #923A43;
+/*      opacity: .5;
+*/}
+
+
+.ushouse.Libertarian:hover {
+      opacity: .85;
+}
+.ushouse.Libertarian {
+       fill: #856027;
+/*      opacity: .5;
+*/}
+
+.ushouse.Democratic {
+  fill: #304EA7;
+/*  opacity: .5;
+*/}
+
+.ushouse.Democratic:hover {
+      opacity: .85;
+}
+
+.ushouse.Independent:hover {
+      opacity: .85;
+}
+.ushouse.Independent {
+    fill: #3F5F49;
+/*      opacity: .5;
+*/}
+
+
+.ushouse.Write-in:hover {
+    fill: #000000;
+      opacity: .85;
+
+}
+.ushouse.Write-in {
+    fill: #332F2F;
+      /*opacity: .2;*/
+
+}
+
+.my-map .loading {
+  position: absolute;
+  display: none;
+}
+
