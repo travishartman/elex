@@ -158,6 +158,56 @@ margin-left: 40px;
 margin-top: -25px;
 }
 
+.amend2 {
+margin-top: -30px;
+}
+
+.c2lowhead {
+  margin-top: -37px;
+}
+
+#ca2yntotal {
+  margin-top: -23px;
+}
+
+.amend3 {
+margin-top: -20px;
+}
+
+.c3lowhead {
+  margin-top: -45px;
+}
+
+#ca3yntotal {
+  margin-top: -25px;
+}
+
+.amend6 {
+margin-top: -20px;
+}
+
+.c6lowhead {
+  margin-top: -30px;
+}
+
+#ca6yntotal {
+  margin-top: -20px;
+}
+
+.amend10 {
+margin-top: -20px;
+}
+
+.c10lowhead {
+  margin-top: -43px;
+}
+
+#ca10yntotal {
+  margin-top: -25px;
+}
+
+
+
 #mapholder{
   width: 900px;
   position: relative;

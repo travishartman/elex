@@ -175,7 +175,7 @@ for (var candidateId in data.candidates){
 // uses entirety of var message from line 112-124 and adds an unordered list closing tag after the loops goes through all the data and breaks.
 
 
-  message += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><h3 class ='lowhead'><br>Statewide Totals:</h3><br> <ul id = 'audittotal'><li>" + bulletgroup[0] + " " + statewide[0] + "<span>" + "<b>("+(~~(statewide[0]/data.total_votes*100).toFixed(2))+"%)</b>"+ "</li><li>" + bulletgroup[1] + " " + statewide[1] + "</li><li>" + bulletgroup[2] + " " +statewide[2]+"</li></ul>";
+  message += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><h3 class ='lowhead'><br>Statewide Totals:</h3><br> <ul id = 'audittotal'><li>" + bulletgroup[0] + " " +statewide[0] + "  " + "<b>("+(~~(statewide[0]/data.total_votes*100).toFixed(2))+"%)</b>"+ "</li><li>" + bulletgroup[1] + " " + statewide[1] + "  " + "<b>("+(~~(statewide[0]/data.total_votes*100).toFixed(2))+"%)</b>"+ "</li><li>" + bulletgroup[2] + " " +statewide[2]+ "  " + "<b>("+(~~(statewide[0]/data.total_votes*100).toFixed(2))+"%)</b>"+"</li></ul>";
 
 
 // '<i class="fa fa-square Constitution' '<i class='fa fa-square Libertarian'" '<i class="fa fa-square Republican'
@@ -201,8 +201,8 @@ for (var candidateId in data.candidates){
             // var bullet = '<i class="fa fa-square ' + results.candidates[candidateId][key] + '"></i>';
             message2 += "<li>" + candidate.candidate_name + '<br/>'+ '(Criminal Trials) ' + '<br/>'+ '<i class="fa fa-square yesvote"></i>' + " " + "Yes votes : "  + results.candidates[candidateId].yes_votes + "  <b>(" +(~~(results.candidates[candidateId].yes_votes/votecount*100).toFixed(2)) +"%)</b>" + '<br/>'+ '<i class="fa fa-square novote"></i>' + " " +  "No votes : " + results.candidates[candidateId].no_votes + "  <b>(" +(~~(results.candidates[candidateId].no_votes/votecount*100).toFixed(2)) +"%)</b></li>"
         }//CLOSE LOOP IN VAR MESSAGE
-
-  message2 += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><br><br><b>Amendment 2:</b> A “yes” vote will amend the Missouri Constitution to allow evidence of prior criminal acts to be considered by courts in prosecutions of sexual crimes that involve a minor<br>";
+bulletgroup =['<i class="fa fa-square yesvote"></i>','<i class="fa fa-square novote"></i>'];
+  message2 += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><br><br><p class='amend2'><b>Amendment 2:</b> A “yes” vote would amend the Missouri Constitution to allow evidence of prior criminal acts to be considered by courts in prosecutions of sexual crimes that involve a minor.</p><br><h3 class ='c2lowhead'><br>Statewide Totals:</h3><br> <ul id = 'ca2yntotal'><li>"+ bulletgroup[0] + " (Y) " + data.candidates[750006198].yes_votes +"  "+ "<b>("+(~~(data.candidates[750006198].yes_votes/data.total_votes*100).toFixed(2)) +"%)</b></li><li>" + bulletgroup[1] + " (N) " +data.candidates[750006198].no_votes+"  "+ "<b>("+(~~(data.candidates[750006198].no_votes/data.total_votes*100).toFixed(2)) +"%)</b></li></ul>";
 
 //  this line simply applies the "message" to go in the infobox - jquery is "x.html(varname)"
   infoBox.html(message2);
@@ -223,8 +223,8 @@ for (var candidateId in data.candidates){
             // var bullet = '<i class="fa fa-square ' + results.candidates[candidateId][key] + '"></i>';
             message2 += "<li>" + candidate.candidate_name + '<br/>'+ '(Teacher Evaluation) ' + '<br/>'+ '<i class="fa fa-square yesvote"></i>' + " " + "Yes votes : "  + results.candidates[candidateId].yes_votes + "  <b>(" +(~~(results.candidates[candidateId].yes_votes/votecount*100).toFixed(2)) +"%)</b>" + '<br/>'+ '<i class="fa fa-square novote"></i>' + " " +  "No votes : " + results.candidates[candidateId].no_votes + "  <b>(" +(~~(results.candidates[candidateId].no_votes/votecount*100).toFixed(2)) +"%)</b></li>"
         }//CLOSE LOOP IN VAR MESSAGE
-
-  message2 += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><br><b>Amendment 3:</b> A “yes” vote will amend the Missouri Constitution to require teachers to be evaluated by a standards based performance evaluation system The amendment also requires contracts of three or less years for every teacher.";
+bulletgroup =['<i class="fa fa-square yesvote"></i>','<i class="fa fa-square novote"></i>'];
+  message2 += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><br><p class = 'amend3'><b>Amendment 3:</b> A “yes” vote would amend the Missouri Constitution to require teachers to be evaluated by a standards-based performance evaluation system. The amendment also requires contracts of three or fewer years for every teacher.</p><br><h3 class ='c3lowhead'><br>Statewide Totals:</h3><br> <ul id = 'ca3yntotal'><li>"+ bulletgroup[0] + " (Y) " + data.candidates[750006199].yes_votes +"  "+ "<b>("+(~~(data.candidates[750006199].yes_votes/data.total_votes*100).toFixed(2)) +"%)</b></li><li>" + bulletgroup[1] + " (N) " +data.candidates[750006199].no_votes+"  "+ "<b>("+(~~(data.candidates[750006199].no_votes/data.total_votes*100).toFixed(2)) +"%)</b></li></ul>";
 
 //  this line simply applies the "message" to go in the infobox - jquery is "x.html(varname)"
   infoBox.html(message2);
@@ -245,8 +245,8 @@ for (var candidateId in data.candidates){
             // var bullet = '<i class="fa fa-square ' + results.candidates[candidateId][key] + '"></i>';
             message2 += "<li>" + candidate.candidate_name + '<br/>'+ '(Voting) ' + '<br/>'+ '<i class="fa fa-square yesvote"></i>' + " " + "Yes votes : "  + results.candidates[candidateId].yes_votes + "  <b>(" +(~~(results.candidates[candidateId].yes_votes/votecount*100).toFixed(2)) +"%)</b>" + '<br/>'+ '<i class="fa fa-square novote"></i>' + " " +  "No votes : " + results.candidates[candidateId].no_votes + "  <b>(" +(~~(results.candidates[candidateId].no_votes/votecount*100).toFixed(2)) +"%)</b></li>"
         }//CLOSE LOOP IN VAR MESSAGE
-
-  message2 += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><br><br><b>Amendment 6:</b> A “yes” vote will amend the Missouri Constitution to allow a voting window of six business days prior to a general election to cast a ballot.";
+bulletgroup =['<i class="fa fa-square yesvote"></i>','<i class="fa fa-square novote"></i>'];
+  message2 += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><br><br><p class='amend6'><b>Amendment 6:</b> A “yes” vote would amend the Missouri Constitution to allow a voting window of six business days prior to a general election to cast a ballot.</p><br><h3 class ='c6lowhead'><br>Statewide Totals:</h3><br> <ul id = 'ca6yntotal'><li>"+ bulletgroup[0] + " (Y) " + data.candidates[750006200].yes_votes +"  "+ "<b>("+(~~(data.candidates[750006200].yes_votes/data.total_votes*100).toFixed(2)) +"%)</b></li><li>" + bulletgroup[1] + " (N) " +data.candidates[750006200].no_votes+"  "+ "<b>("+(~~(data.candidates[750006200].no_votes/data.total_votes*100).toFixed(2)) +"%)</b></li></ul>";
 
 //  this line simply applies the "message" to go in the infobox - jquery is "x.html(varname)"
   infoBox.html(message2);
@@ -268,8 +268,8 @@ for (var candidateId in data.candidates){
             // var bullet = '<i class="fa fa-square ' + results.candidates[candidateId][key] + '"></i>';
             message2 += "<li>" + candidate.candidate_name + '<br/>'+ '(Government Finances) ' + '<br/>'+ '<i class="fa fa-square yesvote"></i>' + " " + "Yes votes : "  + results.candidates[candidateId].yes_votes + "  <b>(" +(~~(results.candidates[candidateId].yes_votes/votecount*100).toFixed(2)) +"%)</b>" + '<br/>'+ '<i class="fa fa-square novote"></i>' + " " +  "No votes : " + results.candidates[candidateId].no_votes + "  <b>(" +(~~(results.candidates[candidateId].no_votes/votecount*100).toFixed(2)) +"%)</b></li>"
         }//CLOSE LOOP IN VAR MESSAGE
-
-  message2 += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><br><br><b>Amendment 10:</b> A “yes” vote will amend the Missouri Constitution to curb the power of the Govenor in terms of his/her ability to amend the state budget after it is passed by the legislature.";
+bulletgroup =['<i class="fa fa-square yesvote"></i>','<i class="fa fa-square novote"></i>'];
+  message2 += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><br><br><p class='amend10'><b>Amendment 10:</b> A “yes” vote would amend the Missouri Constitution to curb the power of the govenor in terms of his/her ability to amend the state budget after it is passed by the legislature.</p><br><h3 class ='c10lowhead'><br>Statewide Totals:</h3><br> <ul id = 'ca10yntotal'><li>"+ bulletgroup[0] + " (Y) " + data.candidates[750006201].yes_votes +"  "+ "<b>("+(~~(data.candidates[750006201].yes_votes/data.total_votes*100).toFixed(2)) +"%)</b></li><li>" + bulletgroup[1] + " (N) " +data.candidates[750006201].no_votes+"  "+ "<b>("+(~~(data.candidates[750006201].no_votes/data.total_votes*100).toFixed(2)) +"%)</b></li></ul>";
 
 //  this line simply applies the "message" to go in the infobox - jquery is "x.html(varname)"
   infoBox.html(message2);
