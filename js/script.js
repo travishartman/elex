@@ -1,5 +1,4 @@
-// <i class="fa fa-square"></i>
-// <i class="fa fa-check-square"></i>
+
 
 
 /*#########################################
@@ -108,8 +107,15 @@ var makeData = {
 
           .defer(d3.json, "data/data_2.json")
           .await(setData);
+          // .await(lastupdate);
     }
   }//close makeData
+
+
+
+
+
+
 
 
 
@@ -131,6 +137,17 @@ infoBoxUpdates = {
            // drills into the object that holds the results
         var results = data.county_results[fips];
         var percent = data.county_results[fips].reporting_precincts /  data.county_results[fips].reporting_precincts;
+
+      var votecount = 0;
+      for (var candidateId in data.candidates){
+      var candidate = data.candidates[candidateId];
+         votecount += results.candidates[candidateId].yes_votes;}
+
+      //    for (var candidateId in data.candidates){
+      // var candidate = data.candidates[candidateId];
+      //    votecount += results.candidates[candidateId].yes_votes;}
+    // console.log(votecount)
+
         // preps the message:  sets the county text to a headline (and starts an unordered list)
         message = "<h4 class = 'ibhed'>County :</h4>"+ "<br/><h3 class = 'cty'>" + results.county + "</h3><ul>";
 
@@ -143,12 +160,15 @@ for (var candidateId in data.candidates){
           // message is a list item (set in the unordered list) and displays the candidate name plus":""
           message += "<li>" + bullet + " " + candidate.candidate_name +'<br/>'+ '( '+ candidate.party + ' ) ' +'<br/>'+ " Votes : " + 
           // and the results from the "yes" votes and then closes the list item.
-          results.candidates[candidateId].yes_votes + 
-          "</li>"
+          results.candidates[candidateId].yes_votes + "  <b>(" +(~~(results.candidates[candidateId].yes_votes/votecount*100).toFixed(2)) +"%)</b></li>";
+          var statewide = candidate.yes_votes;
+
 }//CLOSE LOOP IN VAR MESSAGE
 
 // uses entirety of var message from line 112-124 and adds an unordered list closing tag after the loops goes through all the data and breaks.
-  message += "<b>(Precincts reporting: " +(~~percent) +")</b></ul>";
+
+  message += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><br>Statewide Totals:<br>"+ statewide;
+
 //  this line simply applies the "message" to go in the infobox - jquery is "x.html(varname)"
   infoBox.html(message);
 
@@ -158,15 +178,20 @@ for (var candidateId in data.candidates){
 
         var results = data.county_results[fips];
         var percent = data.county_results[fips].reporting_precincts /  data.county_results[fips].total_precincts;
+
+              for (var candidateId in data.candidates){
+      var candidate = data.candidates[candidateId]}
+         var votecount = results.candidates[candidateId].yes_votes + results.candidates[candidateId].no_votes ;
+
         message2 = "<h4 class = 'ibhed'>County :</h4>"+ "<br/><h3 class = 'cty'>" + results.county + "</h3><ul>";
           for (var candidateId in data.candidates){
             var candidate = data.candidates[candidateId];
             var bullet = '<i class="fa fa-square yes"></i>';
             // var bullet = '<i class="fa fa-square ' + results.candidates[candidateId][key] + '"></i>';
-            message2 += "<li>" + candidate.candidate_name + '<br/>'+ '(Criminal Trials) ' + '<br/>'+ '<i class="fa fa-square yesvote"></i>' + " " + "Yes votes : "  + results.candidates[candidateId].yes_votes +'<br/>'+ '<i class="fa fa-square novote"></i>' + " " +  "No votes : " + results.candidates[candidateId].no_votes + "</li>"
+            message2 += "<li>" + candidate.candidate_name + '<br/>'+ '(Criminal Trials) ' + '<br/>'+ '<i class="fa fa-square yesvote"></i>' + " " + "Yes votes : "  + results.candidates[candidateId].yes_votes + "  <b>(" +(~~(results.candidates[candidateId].yes_votes/votecount*100).toFixed(2)) +"%)</b>" + '<br/>'+ '<i class="fa fa-square novote"></i>' + " " +  "No votes : " + results.candidates[candidateId].no_votes + "  <b>(" +(~~(results.candidates[candidateId].no_votes/votecount*100).toFixed(2)) +"%)</b></li>"
         }//CLOSE LOOP IN VAR MESSAGE
 
-  message2 += "<b>(Precincts reporting: " +(~~percent) +")</b></ul>";
+  message2 += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><br><br><b>Amendment 2:</b> A “yes” vote will amend the Missouri Constitution to allow evidence of prior criminal acts to be considered by courts in prosecutions of sexual crimes that involve a minor<br>";
 
 //  this line simply applies the "message" to go in the infobox - jquery is "x.html(varname)"
   infoBox.html(message2);
@@ -175,15 +200,20 @@ for (var candidateId in data.candidates){
 
         var results = data.county_results[fips];
         var percent = data.county_results[fips].reporting_precincts /  data.county_results[fips].total_precincts;
+
+              for (var candidateId in data.candidates){
+      var candidate = data.candidates[candidateId]}
+         var votecount = results.candidates[candidateId].yes_votes + results.candidates[candidateId].no_votes ;
+
         message2 = "<h4 class = 'ibhed'>County :</h4>"+ "<br/><h3 class = 'cty'>" + results.county + "</h3><ul>";
           for (var candidateId in data.candidates){
             var candidate = data.candidates[candidateId];
             var bullet = '<i class="fa fa-square yes"></i>';
             // var bullet = '<i class="fa fa-square ' + results.candidates[candidateId][key] + '"></i>';
-            message2 += "<li>" + candidate.candidate_name + '<br/>'+ '(Criminal Trials) ' + '<br/>'+ '<i class="fa fa-square yesvote"></i>' + " " + "Yes votes : "  + results.candidates[candidateId].yes_votes +'<br/>'+ '<i class="fa fa-square novote"></i>' + " " +  "No votes : " + results.candidates[candidateId].no_votes + "</li>"
+            message2 += "<li>" + candidate.candidate_name + '<br/>'+ '(Teacher Evaluation) ' + '<br/>'+ '<i class="fa fa-square yesvote"></i>' + " " + "Yes votes : "  + results.candidates[candidateId].yes_votes + "  <b>(" +(~~(results.candidates[candidateId].yes_votes/votecount*100).toFixed(2)) +"%)</b>" + '<br/>'+ '<i class="fa fa-square novote"></i>' + " " +  "No votes : " + results.candidates[candidateId].no_votes + "  <b>(" +(~~(results.candidates[candidateId].no_votes/votecount*100).toFixed(2)) +"%)</b></li>"
         }//CLOSE LOOP IN VAR MESSAGE
 
-  message2 += "<b>(Precincts reporting: " +(~~percent) +")</b></ul>";
+  message2 += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><br><b>Amendment 3:</b> A “yes” vote will amend the Missouri Constitution to require teachers to be evaluated by a standards based performance evaluation system The amendment also requires contracts of three or less years for every teacher.";
 
 //  this line simply applies the "message" to go in the infobox - jquery is "x.html(varname)"
   infoBox.html(message2);
@@ -192,15 +222,20 @@ for (var candidateId in data.candidates){
 
         var results = data.county_results[fips];
         var percent = data.county_results[fips].reporting_precincts /  data.county_results[fips].total_precincts;
+
+              for (var candidateId in data.candidates){
+      var candidate = data.candidates[candidateId]}
+         var votecount = results.candidates[candidateId].yes_votes + results.candidates[candidateId].no_votes ;
+
         message2 = "<h4 class = 'ibhed'>County :</h4>"+ "<br/><h3 class = 'cty'>" + results.county + "</h3><ul>";
           for (var candidateId in data.candidates){
             var candidate = data.candidates[candidateId];
             var bullet = '<i class="fa fa-square yes"></i>';
             // var bullet = '<i class="fa fa-square ' + results.candidates[candidateId][key] + '"></i>';
-            message2 += "<li>" + candidate.candidate_name + '<br/>'+ '(Criminal Trials) ' + '<br/>'+ '<i class="fa fa-square yesvote"></i>' + " " + "Yes votes : "  + results.candidates[candidateId].yes_votes +'<br/>'+ '<i class="fa fa-square novote"></i>' + " " +  "No votes : " + results.candidates[candidateId].no_votes + "</li>"
+            message2 += "<li>" + candidate.candidate_name + '<br/>'+ '(Voting) ' + '<br/>'+ '<i class="fa fa-square yesvote"></i>' + " " + "Yes votes : "  + results.candidates[candidateId].yes_votes + "  <b>(" +(~~(results.candidates[candidateId].yes_votes/votecount*100).toFixed(2)) +"%)</b>" + '<br/>'+ '<i class="fa fa-square novote"></i>' + " " +  "No votes : " + results.candidates[candidateId].no_votes + "  <b>(" +(~~(results.candidates[candidateId].no_votes/votecount*100).toFixed(2)) +"%)</b></li>"
         }//CLOSE LOOP IN VAR MESSAGE
 
-  message2 += "<b>(Precincts reporting: " +(~~percent) +")</b></ul>";
+  message2 += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><br><br><b>Amendment 6:</b> A “yes” vote will amend the Missouri Constitution to allow a voting window of six business days prior to a general election to cast a ballot.";
 
 //  this line simply applies the "message" to go in the infobox - jquery is "x.html(varname)"
   infoBox.html(message2);
@@ -209,15 +244,21 @@ for (var candidateId in data.candidates){
 
         var results = data.county_results[fips];
         var percent = data.county_results[fips].reporting_precincts /  data.county_results[fips].total_precincts;
+
+              for (var candidateId in data.candidates){
+      var candidate = data.candidates[candidateId]}
+         var votecount = results.candidates[candidateId].yes_votes + results.candidates[candidateId].no_votes ;
+
+
         message2 = "<h4 class = 'ibhed'>County :</h4>"+ "<br/><h3 class = 'cty'>" + results.county + "</h3><ul>";
           for (var candidateId in data.candidates){
             var candidate = data.candidates[candidateId];
             var bullet = '<i class="fa fa-square yes"></i>';
             // var bullet = '<i class="fa fa-square ' + results.candidates[candidateId][key] + '"></i>';
-            message2 += "<li>" + candidate.candidate_name + '<br/>'+ '(Criminal Trials) ' + '<br/>'+ '<i class="fa fa-square yesvote"></i>' + " " + "Yes votes : "  + results.candidates[candidateId].yes_votes +'<br/>'+ '<i class="fa fa-square novote"></i>' + " " +  "No votes : " + results.candidates[candidateId].no_votes + "</li>"
+            message2 += "<li>" + candidate.candidate_name + '<br/>'+ '(Government Finances) ' + '<br/>'+ '<i class="fa fa-square yesvote"></i>' + " " + "Yes votes : "  + results.candidates[candidateId].yes_votes + "  <b>(" +(~~(results.candidates[candidateId].yes_votes/votecount*100).toFixed(2)) +"%)</b>" + '<br/>'+ '<i class="fa fa-square novote"></i>' + " " +  "No votes : " + results.candidates[candidateId].no_votes + "  <b>(" +(~~(results.candidates[candidateId].no_votes/votecount*100).toFixed(2)) +"%)</b></li>"
         }//CLOSE LOOP IN VAR MESSAGE
 
-  message2 += "<b>(Precincts reporting: " +(~~percent) +")</b></ul>";
+  message2 += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><br><br><b>Amendment 10:</b> A “yes” vote will amend the Missouri Constitution to curb the power of the Govenor in terms of his/her ability to amend the state budget after it is passed by the legislature.";
 
 //  this line simply applies the "message" to go in the infobox - jquery is "x.html(varname)"
   infoBox.html(message2);
@@ -229,15 +270,23 @@ for (var candidateId in data.candidates){
                     // console.log(fips)
              var results = data[fips];
              var percent = results.reporting_precincts /  results.reporting_precincts;
+
+                 var votecount = 0;
+      for (var candidateId in results.candidates){
+      var candidate = results.candidates[candidateId];
+         votecount += results.candidates[candidateId].yes_votes ;}
+         // console.log(votecount);
+
+
              // console.log(results)
         message2 = "<h3 class = 'ibhed'>" + [fips] + "</h3><ul>";
           for (var candidateId in results.candidates){
             var candidate = results.candidates[candidateId];
             var bullet = '<i class="fa fa-square ' + candidate.party + '"></i>';
-            message2 += "<li>" + bullet + " " + candidate.candidate_name + '<br/>'+ '( ' + candidate.party + ') ' + '<br/>'+ "Votes : " + results.candidates[candidateId].yes_votes +'<br/>'+"</li>"
+            message2 += "<li>" + bullet + " " + candidate.candidate_name + '<br/>'+ '( ' + candidate.party + ') ' + '<br/>'+ "Votes : " + results.candidates[candidateId].yes_votes + "  <b>(" +(~~(results.candidates[candidateId].yes_votes/votecount*100).toFixed(2)) +"%)</b>" +'<br/>'+"</li>"
         }//CLOSE LOOP IN VAR MESSAGE
 
-  message2 += "<b>(Precincts reporting: " +(~~percent) +")</b></ul>";
+  message2 += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul>";
 
 //  this line simply applies the "message" to go in the infobox - jquery is "x.html(varname)"
   infoBox.html(message2);
@@ -248,17 +297,24 @@ for (var candidateId in data.candidates){
                     fips = fips_replace.replace(/_/,' ');
                     // console.log(fips)
              var results = data[fips];
-             var percent = results.reporting_precincts /  results.reporting_precincts;
-             // console.log(results)
-        message2 = "<h3 class = 'ibhed'>" + [fips] + "</h3><ul>" + "<li>" + '<i class="fa fa-square norace"></i>' + " (Indicates no race in 2014)";
+           var votecount = 0;
+          var messagenon = "<h3 class = 'ibhed'>" + [fips] + "</h3><ul>" + "<li>" + '<i class="fa fa-square norace"></i>' + " (Indicates no race in 2014)";
+
+     if (typeof results == "undefined") {infoBox.html(messagenon);} else {
+            var percent = results.reporting_precincts /  results.reporting_precincts;
+          for (var candidateId in results.candidates){
+          var candidate = results.candidates[candidateId];
+             votecount += results.candidates[candidateId].yes_votes ;}
+
+        message2 = "<h3 class = 'ibhed'>" + [fips] + "</h3><ul>" + "<li>";
           for (var candidateId in results.candidates){
             var candidate = results.candidates[candidateId];
             var bullet = '<i class="fa fa-square ' + candidate.party + '"></i>';
-            message2 += "<li>" + bullet + " " + candidate.candidate_name + '<br/>'+ '( ' + candidate.party + ') ' + '<br/>'+ "Votes : " + results.candidates[candidateId].yes_votes +'<br/>'+"</li>"
+            message2 += "<li>" + bullet + " " + candidate.candidate_name + '<br/>'+ '( ' + candidate.party + ') ' + '<br/>'+ "Votes : " + results.candidates[candidateId].yes_votes + "  <b>(" +(~~(results.candidates[candidateId].yes_votes/votecount*100).toFixed(2)) +"%)</b>" +'<br/>'+"</li>"
         }//CLOSE LOOP IN VAR MESSAGE
 
 
-  message2 += "<b>(Precincts reporting: " +(~~percent) +")</b></ul>";
+  message2 += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul>";
 
 // polyfill:
 // if (!Object.keys) Object.keys = function(o) {
@@ -272,7 +328,8 @@ for (var candidateId in data.candidates){
 
 
 //  this line simply applies the "message" to go in the infobox - jquery is "x.html(varname)"
-  infoBox.html(message2);
+
+  infoBox.html(message2);}
 
   }else  if (currView === "ushouse"){ 
 
@@ -281,14 +338,20 @@ for (var candidateId in data.candidates){
              var results = data[fips];
              var percent = results.reporting_precincts /  results.reporting_precincts;
 
+                 var votecount = 0;
+      for (var candidateId in results.candidates){
+      var candidate = results.candidates[candidateId];
+         votecount += results.candidates[candidateId].yes_votes ;}
+
+
         message2 = "<h3 class = 'ibhed'>" + [fips] + "</h3><ul>";
           for (var candidateId in results.candidates){
             var candidate = results.candidates[candidateId];
             var bullet = '<i class="fa fa-square ' + candidate.party + '"></i>';
-            message2 += "<li>" + bullet + " " + candidate.candidate_name + '<br/>'+ '( ' + candidate.party + ') ' + '<br/>'+ "Votes : " + results.candidates[candidateId].yes_votes +'<br/>'+"</li>"
+            message2 += "<li>" + bullet + " " + candidate.candidate_name + '<br/>'+ '( ' + candidate.party + ') ' + '<br/>'+ "Votes : " + results.candidates[candidateId].yes_votes + "  <b>(" +(~~(results.candidates[candidateId].yes_votes/votecount*100).toFixed(2)) +"%)</b>" +'<br/>'+"</li>"
         }//CLOSE LOOP IN VAR MESSAGE
 
-  message2 += "<b>(Precincts reporting: " +(~~percent) +")</b></ul>";
+  message2 += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul>";
 
 //  this line simply applies the "message" to go in the infobox - jquery is "x.html(varname)"
   infoBox.html(message2);
@@ -342,15 +405,20 @@ update = {
         var fipsInfo = data.county_results[fips],
                   el = d3.select('path#fips'+fips);
 
-          var max = {yes_no: "no", votes: 0};
+        var max = {yes_no: "", votes: 0};
           for (candidateId in fipsInfo.candidates){
-            if (fipsInfo.candidates[candidateId].yes_votes > fipsInfo.candidates[candidateId].no_votes) {
-              max = {yes_no: 'yes', votes: fipsInfo.candidates[candidateId].yes_votes} 
-            } else { max = { yes_no: 'no', votes: fipsInfo.candidates[candidateId].no_votes}
+            if (fipsInfo.candidates[candidateId].yes_votes === fipsInfo.candidates[candidateId].no_votes) {
+              max = {yes_no: ''} 
+            } else if 
+            (fipsInfo.candidates[candidateId].yes_votes > fipsInfo.candidates[candidateId].no_votes)
+            { max = { yes_no: 'yes', votes: fipsInfo.candidates[candidateId].no_votes} }
+            else if 
+            (fipsInfo.candidates[candidateId].yes_votes < fipsInfo.candidates[candidateId].no_votes)
+            { max = { yes_no: 'no', votes: fipsInfo.candidates[candidateId].no_votes}
 
           };
 
-        } //end nested if statement    
+        } //end nested if statement     
       
         el.attr('class', 'county _' + max.yes_no);
 
@@ -366,15 +434,20 @@ update = {
         var fipsInfo = data.county_results[fips],
                   el = d3.select('path#fips'+fips);
 
-          var max = {yes_no: "no", votes: 0};
+         var max = {yes_no: "", votes: 0};
           for (candidateId in fipsInfo.candidates){
-            if (fipsInfo.candidates[candidateId].yes_votes > fipsInfo.candidates[candidateId].no_votes) {
-              max = {yes_no: 'yes', votes: fipsInfo.candidates[candidateId].yes_votes} 
-            } else { max = { yes_no: 'no', votes: fipsInfo.candidates[candidateId].no_votes}
+            if (fipsInfo.candidates[candidateId].yes_votes === fipsInfo.candidates[candidateId].no_votes) {
+              max = {yes_no: ''} 
+            } else if 
+            (fipsInfo.candidates[candidateId].yes_votes > fipsInfo.candidates[candidateId].no_votes)
+            { max = { yes_no: 'yes', votes: fipsInfo.candidates[candidateId].no_votes} }
+            else if 
+            (fipsInfo.candidates[candidateId].yes_votes < fipsInfo.candidates[candidateId].no_votes)
+            { max = { yes_no: 'no', votes: fipsInfo.candidates[candidateId].no_votes}
 
           };
 
-        } //end nested if statement    
+        } //end nested if statement     
       
         el.attr('class', 'county _' + max.yes_no);
 
@@ -388,11 +461,16 @@ update = {
         var fipsInfo = data.county_results[fips],
                   el = d3.select('path#fips'+fips);
 
-          var max = {yes_no: "no", votes: 0};
+          var max = {yes_no: "", votes: 0};
           for (candidateId in fipsInfo.candidates){
-            if (fipsInfo.candidates[candidateId].yes_votes > fipsInfo.candidates[candidateId].no_votes) {
-              max = {yes_no: 'yes', votes: fipsInfo.candidates[candidateId].yes_votes} 
-            } else { max = { yes_no: 'no', votes: fipsInfo.candidates[candidateId].no_votes}
+            if (fipsInfo.candidates[candidateId].yes_votes === fipsInfo.candidates[candidateId].no_votes) {
+              max = {yes_no: ''} 
+            } else if 
+            (fipsInfo.candidates[candidateId].yes_votes > fipsInfo.candidates[candidateId].no_votes)
+            { max = { yes_no: 'yes', votes: fipsInfo.candidates[candidateId].no_votes} }
+            else if 
+            (fipsInfo.candidates[candidateId].yes_votes < fipsInfo.candidates[candidateId].no_votes)
+            { max = { yes_no: 'no', votes: fipsInfo.candidates[candidateId].no_votes}
 
           };
 
@@ -410,15 +488,20 @@ ca10: function (data){
         var fipsInfo = data.county_results[fips],
                   el = d3.select('path#fips'+fips);
 
-          var max = {yes_no: "no", votes: 0};
+        var max = {yes_no: "", votes: 0};
           for (candidateId in fipsInfo.candidates){
-            if (fipsInfo.candidates[candidateId].yes_votes > fipsInfo.candidates[candidateId].no_votes) {
-              max = {yes_no: 'yes', votes: fipsInfo.candidates[candidateId].yes_votes} 
-            } else { max = { yes_no: 'no', votes: fipsInfo.candidates[candidateId].no_votes}
+            if (fipsInfo.candidates[candidateId].yes_votes === fipsInfo.candidates[candidateId].no_votes) {
+              max = {yes_no: ''} 
+            } else if 
+            (fipsInfo.candidates[candidateId].yes_votes > fipsInfo.candidates[candidateId].no_votes)
+            { max = { yes_no: 'yes', votes: fipsInfo.candidates[candidateId].no_votes} }
+            else if 
+            (fipsInfo.candidates[candidateId].yes_votes < fipsInfo.candidates[candidateId].no_votes)
+            { max = { yes_no: 'no', votes: fipsInfo.candidates[candidateId].no_votes}
 
           };
 
-        } //end nested if statement    
+        } //end nested if statement     
       
         el.attr('class', 'county _' + max.yes_no);
 
@@ -510,6 +593,12 @@ theMap.init();
   
 
 test = feed_data;
+
+ var timeBox = $('#time');
+var lu = " <i>Last Updated: " + test.last_updated + "</i>";
+// console.log(lu)
+timeBox.html(lu);
+  // time.html(lu)
 
 mapData = {
   mosenate: test.races['State Senate'],

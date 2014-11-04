@@ -1,4 +1,10 @@
 
+
+/*notes*/
+/*apply styles to .group.xxx to remove black color, then fill on individual paths to set color for class.*/
+/*[class="classname"] { fill: color;} will select the class and onyl the class when you need it.  */
+
+
 #main-content {
   width: 960;
   margin: 0, 15px, 0, 15px;
@@ -8,6 +14,9 @@
   height: 500px;
 }
 
+.container {
+  width: 900px;
+}
 
 
 .group.county {
@@ -33,7 +42,7 @@
 }*/
 
 .group.ushouse {
-	/*fill: #fff;*/
+	fill: #fff;
   	transition: fill 0.2s ease;
 
 }
@@ -63,9 +72,9 @@
 }
 
 /*hover sets to red*/
-[class = "mosenate"]:hover {
+/*[class = "mosenate"]:hover {
   fill: #;
-}
+}*/
 
 .mosenate-edges {
   fill: none;
@@ -84,9 +93,10 @@
 }
 
 /*hover sets to red*/
-.mohouse :hover {
+/*.mohouse :hover {
 	fill: #D0D1D6;
-}
+  transition: fill 0.2s ease;
+}*/
 
 .mohouse-edges {
   fill: none;
@@ -131,7 +141,7 @@ li {
 
 .btn {
 margin-left: 40px;
-	margin-top: 25px;
+	margin-top: 0px;
 	/*float: right;*/
 }
 
@@ -145,7 +155,7 @@ margin-left: 40px;
 }
 
 #mapholder{
-  width: 930px;
+  width: 900px;
   position: relative;
 }
 
@@ -154,10 +164,19 @@ margin-left: 40px;
   width: 250px;
   /*background-color: red;*/
   position: absolute;
-  top: 80px;
-  right: 100px;
+  top: 30px;
+  right: 80px;
 
   z-index: -1;
+}
+
+#time {
+  height:30px; 
+  width:250px;
+  /*background-color: red;*/
+  position: absolute;
+  right: 72px;
+  bottom: -20px;
 }
 
 
@@ -169,6 +188,18 @@ margin-left: 40px;
 
 
 /*state auditor:*/
+
+/*no votes*/
+
+[class = "county _"]{
+fill: #F6F6F6;
+}
+
+.county._:hover{
+fill: #D0D1D6;
+opacity: .7;
+    transition: fill 0.2s ease;
+}
 
       /*constituiton party*/
 
@@ -233,6 +264,15 @@ margin-left: 40px;
 
 /*Amendment 2/3/6/10*/
 
+    .county._tie {
+    fill: #F6F6F6;
+    }
+
+    .county._tie :hover {
+    fill: #D0D1D6;
+    transition: fill 0.2s ease;
+    }
+
 
       .county._yes:hover {
       transition: fill 0.2s ease;
@@ -272,6 +312,23 @@ margin-left: 40px;
 
 /*MoHouse*/
 
+/*novotes*/
+
+[class = "mohouse "] {
+  fill: #F6F6F6;
+}
+
+.mohouse :hover {
+  fill: #D0D1D6;
+  transition: fill 0.2s ease;
+}
+
+
+
+
+/*.mohouse {
+  fill: #eee;
+}*/
 
 .mohouse.Republican:hover {
 
@@ -326,6 +383,15 @@ margin-left: 40px;
 
 /*MoSenate*/
 
+/*novotes:*/
+[class = "mosenate "] {
+  fill: #F6F6F6;
+}
+
+.mosenate :hover {
+  fill: #D0D1D6;
+  transition: fill 0.2s ease;
+}
 
 /*not in contention: by using brackets, it selects the elements with exact class "mosenate"*/
 [class="mosenate"] {
@@ -383,6 +449,15 @@ margin-left: 40px;
 }
 
 /*USHouse*/
+
+[class = "ushouse "] {
+  fill: #F6F6F6;
+}
+
+.ushouse :hover {
+  fill: #D0D1D6;
+  transition: fill 0.2s ease;
+}
 
 .ushouse.Republican:hover {
       opacity: .85;
