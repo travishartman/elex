@@ -154,6 +154,10 @@ margin-left: 40px;
   margin-top: -10px;
 }
 
+#audittotal{
+margin-top: -25px;
+}
+
 #mapholder{
   width: 900px;
   position: relative;

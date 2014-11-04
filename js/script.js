@@ -139,10 +139,14 @@ infoBoxUpdates = {
         var percent = data.county_results[fips].reporting_precincts /  data.county_results[fips].reporting_precincts;
 
       var votecount = 0;
+      var statewide = [];
+      var bulletgroup = []
       for (var candidateId in data.candidates){
       var candidate = data.candidates[candidateId];
-         votecount += results.candidates[candidateId].yes_votes;}
-
+         votecount += results.candidates[candidateId].yes_votes;
+         statewide.push(candidate.yes_votes);}
+         
+      
       //    for (var candidateId in data.candidates){
       // var candidate = data.candidates[candidateId];
       //    votecount += results.candidates[candidateId].yes_votes;}
@@ -156,18 +160,25 @@ infoBoxUpdates = {
 for (var candidateId in data.candidates){
   // sets the results of the loop to "candidate" i.e. the values in the object (which is the IDs)
      var candidate = data.candidates[candidateId];
+
          var bullet = '<i class="fa fa-square ' + candidate.party + '"></i>';
+         bulletgroup.push(bullet);
+
           // message is a list item (set in the unordered list) and displays the candidate name plus":""
           message += "<li>" + bullet + " " + candidate.candidate_name +'<br/>'+ '( '+ candidate.party + ' ) ' +'<br/>'+ " Votes : " + 
           // and the results from the "yes" votes and then closes the list item.
           results.candidates[candidateId].yes_votes + "  <b>(" +(~~(results.candidates[candidateId].yes_votes/votecount*100).toFixed(2)) +"%)</b></li>";
-          var statewide = candidate.yes_votes;
+          
 
 }//CLOSE LOOP IN VAR MESSAGE
-
+// bulletgroup.push(bullet);
 // uses entirety of var message from line 112-124 and adds an unordered list closing tag after the loops goes through all the data and breaks.
 
-  message += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><br>Statewide Totals:<br>"+ statewide;
+
+  message += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><h3 class ='lowhead'><br>Statewide Totals:</h3><br> <ul id = 'audittotal'><li>" + bulletgroup[0] + " " + statewide[0] + "<span>" + "<b>("+(~~(statewide[0]/data.total_votes*100).toFixed(2))+"%)</b>"+ "</li><li>" + bulletgroup[1] + " " + statewide[1] + "</li><li>" + bulletgroup[2] + " " +statewide[2]+"</li></ul>";
+
+
+// '<i class="fa fa-square Constitution' '<i class='fa fa-square Libertarian'" '<i class="fa fa-square Republican'
 
 //  this line simply applies the "message" to go in the infobox - jquery is "x.html(varname)"
   infoBox.html(message);
