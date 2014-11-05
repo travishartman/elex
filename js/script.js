@@ -104,8 +104,8 @@ var makeData = {
 
       init: function (){
       queue()
-          .defer(d3.json, "data/data_2.json")
-          // .defer(d3.json, "data/election_data.json")
+          // .defer(d3.json, "data/data_2.json")
+          .defer(d3.json, "data/election_data.json")
           .await(setData);
           // .await(lastupdate);
     }
