@@ -175,7 +175,7 @@ for (var candidateId in data.candidates){
 // uses entirety of var message from line 112-124 and adds an unordered list closing tag after the loops goes through all the data and breaks.
 
 
-  message += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><h3 class ='lowhead'><br>Statewide Totals:</h3><br> <ul id = 'audittotal'><li>" + bulletgroup[0] + " " +statewide[0] + "  " + "<b>("+(~~(statewide[0]/(statewide[0]+statewide[1]+statewide[2])*100).toFixed(2))+"%)</b>"+ "</li><li>" + bulletgroup[1] + " " + statewide[1] + "  " + "<b>("+(~~(statewide[0]/(statewide[0]+statewide[1]+statewide[2])*100).toFixed(2))+"%)</b>"+ "</li><li>" + bulletgroup[2] + " " +statewide[2]+ "  " + "<b>("+(~~(statewide[0]/(statewide[0]+statewide[1]+statewide[2])*100).toFixed(2))+"%)</b>"+"</li></ul>";
+  message += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><h3 class ='lowhead'><br>Statewide Totals:</h3><br> <ul id = 'audittotal'><li>" + bulletgroup[0] + " " +statewide[0] + "  " + "<b>("+(~~(statewide[0]/(statewide[0]+statewide[1]+statewide[2])*100).toFixed(2))+"%)</b>"+ "</li><li>" + bulletgroup[1] + " " + statewide[1] + "  " + "<b>("+(~~(statewide[1]/(statewide[0]+statewide[1]+statewide[2])*100).toFixed(2))+"%)</b>"+ "</li><li>" + bulletgroup[2] + " " +statewide[2]+ "  " + "<b>("+(~~(statewide[2]/(statewide[0]+statewide[1]+statewide[2])*100).toFixed(2))+"%)</b>"+"</li></ul>";
 
 
 // '<i class="fa fa-square Constitution' '<i class='fa fa-square Libertarian'" '<i class="fa fa-square Republican'
