@@ -105,6 +105,7 @@ var makeData = {
       init: function (){
       queue()
           // .defer(d3.json, "data/data_2.json")
+          // .defer(d3.json, "data/election_data.json")
           .defer(d3.json, "data/election_data.json")
           .await(setData);
           // .await(lastupdate);
@@ -136,7 +137,7 @@ infoBoxUpdates = {
            if (currView === "audit"){
            // drills into the object that holds the results
         var results = data.county_results[fips];
-        var percent = data.county_results[fips].reporting_precincts /  data.county_results[fips].total_precincts;
+        var percent = ((data.county_results[fips].reporting_precincts /  data.county_results[fips].total_precincts)*100).toFixed(2);
 console.log(percent)
       var votecount = 0;
       var statewide = [];
@@ -188,8 +189,7 @@ for (var candidateId in data.candidates){
 } else  if (currView === "ca2"){ 
 
         var results = data.county_results[fips];
-        var percent = data.county_results[fips].reporting_precincts / data.county_results[fips].total_precincts;
-
+        var percent = ((data.county_results[fips].reporting_precincts /  data.county_results[fips].total_precincts)*100).toFixed(2);
               for (var candidateId in data.candidates){
       var candidate = data.candidates[candidateId]}
          var votecount = results.candidates[candidateId].yes_votes + results.candidates[candidateId].no_votes ;
@@ -210,8 +210,7 @@ bulletgroup =['<i class="fa fa-square yesvote"></i>','<i class="fa fa-square nov
   }  else  if (currView === "ca3"){ 
 
         var results = data.county_results[fips];
-        var percent = data.county_results[fips].reporting_precincts /  data.county_results[fips].total_precincts;
-
+        var percent = ((data.county_results[fips].reporting_precincts /  data.county_results[fips].total_precincts)*100).toFixed(2);
               for (var candidateId in data.candidates){
       var candidate = data.candidates[candidateId]}
          var votecount = results.candidates[candidateId].yes_votes + results.candidates[candidateId].no_votes ;
@@ -232,7 +231,7 @@ bulletgroup =['<i class="fa fa-square yesvote"></i>','<i class="fa fa-square nov
   } else  if (currView === "ca6"){ 
 
         var results = data.county_results[fips];
-        var percent = data.county_results[fips].reporting_precincts /  data.county_results[fips].total_precincts;
+        var percent = ((data.county_results[fips].reporting_precincts /  data.county_results[fips].total_precincts)*100).toFixed(2);
 
               for (var candidateId in data.candidates){
       var candidate = data.candidates[candidateId]}
@@ -254,7 +253,7 @@ bulletgroup =['<i class="fa fa-square yesvote"></i>','<i class="fa fa-square nov
   } else  if (currView === "ca10"){ 
 
         var results = data.county_results[fips];
-        var percent = data.county_results[fips].reporting_precincts /  data.county_results[fips].total_precincts;
+        var percent = ((data.county_results[fips].reporting_precincts /  data.county_results[fips].total_precincts)*100).toFixed(2);
 
               for (var candidateId in data.candidates){
       var candidate = data.candidates[candidateId]}
@@ -280,7 +279,7 @@ bulletgroup =['<i class="fa fa-square yesvote"></i>','<i class="fa fa-square nov
                     fips = fips_replace.replace(/_/,' ');
                     // console.log(fips)
              var results = data[fips];
-             var percent = results.reporting_precincts /  results.reporting_precincts;
+             var percent = (results.pct_precincts_reported*100).toFixed(2);
 
                  var votecount = 0;
       for (var candidateId in results.candidates){
@@ -312,7 +311,8 @@ bulletgroup =['<i class="fa fa-square yesvote"></i>','<i class="fa fa-square nov
           var messagenon = "<h3 class = 'ibhed'>" + [fips] + "</h3><ul>" + "<li>" + '<i class="fa fa-square norace"></i>' + " (Indicates no race in 2014)";
 
      if (typeof results == "undefined") {infoBox.html(messagenon);} else {
-            var percent = results.reporting_precincts /  results.reporting_precincts;
+                          var percent = (results.pct_precincts_reported*100).toFixed(2);
+
           for (var candidateId in results.candidates){
           var candidate = results.candidates[candidateId];
              votecount += results.candidates[candidateId].yes_votes ;}
@@ -347,7 +347,8 @@ bulletgroup =['<i class="fa fa-square yesvote"></i>','<i class="fa fa-square nov
         var fips_replace = this.id.replace(/US/,''),
                     fips = fips_replace.replace(/_/,' ');
              var results = data[fips];
-             var percent = results.reporting_precincts /  results.reporting_precincts;
+                          var percent = (results.pct_precincts_reported*100).toFixed(2);
+
 
                  var votecount = 0;
       for (var candidateId in results.candidates){
