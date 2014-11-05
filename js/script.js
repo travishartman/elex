@@ -136,8 +136,8 @@ infoBoxUpdates = {
            if (currView === "audit"){
            // drills into the object that holds the results
         var results = data.county_results[fips];
-        var percent = data.county_results[fips].reporting_precincts /  data.county_results[fips].reporting_precincts;
-
+        var percent = data.county_results[fips].reporting_precincts /  data.county_results[fips].total_precincts;
+console.log(percent)
       var votecount = 0;
       var statewide = [];
       var bulletgroup = []
@@ -145,7 +145,7 @@ infoBoxUpdates = {
       var candidate = data.candidates[candidateId];
          votecount += results.candidates[candidateId].yes_votes;
          statewide.push(candidate.yes_votes);}
-         console.log(statewide)
+         // console.log(statewide)
       
       //    for (var candidateId in data.candidates){
       // var candidate = data.candidates[candidateId];
@@ -188,7 +188,7 @@ for (var candidateId in data.candidates){
 } else  if (currView === "ca2"){ 
 
         var results = data.county_results[fips];
-        var percent = data.county_results[fips].reporting_precincts /  data.county_results[fips].total_precincts;
+        var percent = data.county_results[fips].reporting_precincts / data.county_results[fips].total_precincts;
 
               for (var candidateId in data.candidates){
       var candidate = data.candidates[candidateId]}
