@@ -104,8 +104,8 @@ var makeData = {
 
       init: function (){
       queue()
-
-          .defer(d3.json, "data/election_data.json")
+          .defer(d3.json, "data/data_2.json")
+          // .defer(d3.json, "data/election_data.json")
           .await(setData);
           // .await(lastupdate);
     }
@@ -145,7 +145,7 @@ infoBoxUpdates = {
       var candidate = data.candidates[candidateId];
          votecount += results.candidates[candidateId].yes_votes;
          statewide.push(candidate.yes_votes);}
-         
+         console.log(statewide)
       
       //    for (var candidateId in data.candidates){
       // var candidate = data.candidates[candidateId];
@@ -175,7 +175,7 @@ for (var candidateId in data.candidates){
 // uses entirety of var message from line 112-124 and adds an unordered list closing tag after the loops goes through all the data and breaks.
 
 
-  message += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><h3 class ='lowhead'><br>Statewide Totals:</h3><br> <ul id = 'audittotal'><li>" + bulletgroup[0] + " " +statewide[0] + "  " + "<b>("+(~~(statewide[0]/data.total_votes*100).toFixed(2))+"%)</b>"+ "</li><li>" + bulletgroup[1] + " " + statewide[1] + "  " + "<b>("+(~~(statewide[0]/data.total_votes*100).toFixed(2))+"%)</b>"+ "</li><li>" + bulletgroup[2] + " " +statewide[2]+ "  " + "<b>("+(~~(statewide[0]/data.total_votes*100).toFixed(2))+"%)</b>"+"</li></ul>";
+  message += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><h3 class ='lowhead'><br>Statewide Totals:</h3><br> <ul id = 'audittotal'><li>" + bulletgroup[0] + " " +statewide[0] + "  " + "<b>("+(~~(statewide[0]/(statewide[0]+statewide[1]+statewide[2])*100).toFixed(2))+"%)</b>"+ "</li><li>" + bulletgroup[1] + " " + statewide[1] + "  " + "<b>("+(~~(statewide[0]/(statewide[0]+statewide[1]+statewide[2])*100).toFixed(2))+"%)</b>"+ "</li><li>" + bulletgroup[2] + " " +statewide[2]+ "  " + "<b>("+(~~(statewide[0]/(statewide[0]+statewide[1]+statewide[2])*100).toFixed(2))+"%)</b>"+"</li></ul>";
 
 
 // '<i class="fa fa-square Constitution' '<i class='fa fa-square Libertarian'" '<i class="fa fa-square Republican'
@@ -224,7 +224,7 @@ bulletgroup =['<i class="fa fa-square yesvote"></i>','<i class="fa fa-square nov
             message2 += "<li>" + candidate.candidate_name + '<br/>'+ '(Teacher Evaluation) ' + '<br/>'+ '<i class="fa fa-square yesvote"></i>' + " " + "Yes votes : "  + results.candidates[candidateId].yes_votes + "  <b>(" +(~~(results.candidates[candidateId].yes_votes/votecount*100).toFixed(2)) +"%)</b>" + '<br/>'+ '<i class="fa fa-square novote"></i>' + " " +  "No votes : " + results.candidates[candidateId].no_votes + "  <b>(" +(~~(results.candidates[candidateId].no_votes/votecount*100).toFixed(2)) +"%)</b></li>"
         }//CLOSE LOOP IN VAR MESSAGE
 bulletgroup =['<i class="fa fa-square yesvote"></i>','<i class="fa fa-square novote"></i>'];
-  message2 += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><br><p class = 'amend3'><b>Amendment 3:</b> A “yes” vote would amend the Missouri Constitution to require teachers to be evaluated by a standards-based performance evaluation system. The amendment also requires contracts of three or fewer years for every teacher.</p><br><h3 class ='c3lowhead'><br>Statewide Totals:</h3><br> <ul id = 'ca3yntotal'><li>"+ bulletgroup[0] + " (Y) " + data.candidates[750006199].yes_votes +"  "+ "<b>("+(~~(data.candidates[750006199].yes_votes/data.total_votes*100).toFixed(2)) +"%)</b></li><li>" + bulletgroup[1] + " (N) " +data.candidates[750006199].no_votes+"  "+ "<b>("+(~~(data.candidates[750006199].no_votes/data.total_votes*100).toFixed(2)) +"%)</b></li></ul>";
+  message2 += "<br><b>(Precincts reporting: " +(~~percent) +"%)</b></ul><br><p class = 'amend3'><b>Amendment 3:</b> A “yes” vote would amend the Missouri Constitution to require teachers to be evaluated by a standards-based performance evaluation system.</p><br><h3 class ='c3lowhead'><br>Statewide Totals:</h3><br> <ul id = 'ca3yntotal'><li>"+ bulletgroup[0] + " (Y) " + data.candidates[750006199].yes_votes +"  "+ "<b>("+(~~(data.candidates[750006199].yes_votes/data.total_votes*100).toFixed(2)) +"%)</b></li><li>" + bulletgroup[1] + " (N) " +data.candidates[750006199].no_votes+"  "+ "<b>("+(~~(data.candidates[750006199].no_votes/data.total_votes*100).toFixed(2)) +"%)</b></li></ul>";
 
 //  this line simply applies the "message" to go in the infobox - jquery is "x.html(varname)"
   infoBox.html(message2);
